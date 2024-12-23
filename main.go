@@ -8,6 +8,10 @@ import (
 	"wrollup/cmd"
 )
 
+// go run main.go create --job sensor --indice vsd
+// go run main.go delete --job sensor
+// go run main.go clean --indice vsd --duration 2M
+
 func main() {
 	err := wtools.LogToFile()
 	if err != nil {

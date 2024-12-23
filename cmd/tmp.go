@@ -1,8 +1,10 @@
 package cmd
 
-var mapping = map[string]string{
-	"vsd": vsd,
-}
+var (
+	mapping = map[string]string{
+		"vsd": vsd,
+	}
+)
 
 var (
 	vsd = `{

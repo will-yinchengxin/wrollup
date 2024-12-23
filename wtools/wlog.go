@@ -2,17 +2,25 @@ package wtools
 
 import (
 	"fmt"
-	"github.com/charmbracelet/log"
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"time"
+
+	"github.com/charmbracelet/log"
 )
 
 var (
-	logger     *log.Logger
-	fileLogger *log.Logger
+	logger      *log.Logger
+	fileLogger  *log.Logger
+	projectRoot string
 )
+
+func init() {
+	_, currentFile, _, _ := runtime.Caller(0)
+	projectRoot = filepath.Dir(filepath.Dir(currentFile))
+}
 
 func LogToFile() error {
 	var (
@@ -54,8 +62,14 @@ func getCallerInfo() string {
 	if !ok {
 		return "unknown:0"
 	}
-	shortFile := filepath.Base(file)
-	return fmt.Sprintf("%s:%d", shortFile, line)
+
+	relPath, err := filepath.Rel(projectRoot, file)
+	if err != nil {
+		return fmt.Sprintf("%s:%d", filepath.Base(file), line)
+	}
+
+	relPath = strings.ReplaceAll(relPath, "\\", "/")
+	return fmt.Sprintf("%s:%d", relPath, line)
 }
 
 func Info(msg string) {
