@@ -25,10 +25,10 @@ func init() {
 func LogToFile() error {
 	var (
 		logDir  = "/var/log/vda/xlog"
-		logFile = "vda-rollup.log"
+		logFile = "wrollup.log"
 	)
 	if _, err := os.Stat(logDir); os.IsNotExist(err) {
-		fmt.Println("日志目录不存在，使用当前目录下的 vda-rollup.log")
+		fmt.Println("日志目录不存在，使用当前目录下的 wrollup.log")
 		logFile = "./" + logFile
 	} else {
 		fmt.Println("日志目录存在，日志将输出到:", logFile)
