@@ -78,7 +78,7 @@ func (c *Client) GetAllRollupJobs() error {
 	}
 	fmt.Println("")
 	table := tablewriter.NewWriter(os.Stdout)
-	fmt.Println("---------+---------------+--------------+--------+----------------+-----------------+------------------")
+	fmt.Println("-------------+---------------+--------------+--------+----------------+-----------------+------------------")
 	table.SetHeader([]string{"Job ID", "Index Pattern", "Rollup Index", "Status", "Docs Processed", "Pages Processed", "Rollups Indexed"})
 	table.SetBorder(false)
 	table.SetHeaderColor(
