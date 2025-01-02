@@ -4,8 +4,10 @@ package cmd
 
 var (
 	mapping = map[string]string{
-		"vsd": vsd,
-		"vsp": vsp,
+		"vsd":         vsd,
+		"vsp":         vsp,
+		"cc-p-h1-acc": vsp,
+		"cc-d-h1-acc": vsd,
 	}
 	indiceMapping = map[string]string{
 		"cc-d-h1-acc": "cc-d-h1-acc",
