@@ -12,6 +12,8 @@ var (
 	duration string
 )
 
+// 0 1 * * * /usr/local/vda/wrollup clean --indice vsd --duration 15D && /usr/local/vda/wrollup clean --indice vsp --duration 15D >> /path/to/logfile.log 2>&1
+
 var cleanCmd = &cobra.Command{
 	Use:   "clean",
 	Short: "Clean old data from indices",
@@ -29,13 +31,13 @@ var cleanCmd = &cobra.Command{
 		client := es.NewClient(esURL)
 
 		// 提示功能, 可选
-		fmt.Printf("Are you sure you want to delete data older than 3 months from %s? (y/N): ", indice)
-		var response string
-		fmt.Scanln(&response)
-		if response != "y" && response != "Y" {
-			fmt.Println("Operation cancelled")
-			return
-		}
+		//fmt.Printf("Are you sure you want to delete data older than 3 months from %s? (y/N): ", indice)
+		//var response string
+		//fmt.Scanln(&response)
+		//if response != "y" && response != "Y" {
+		//	fmt.Println("Operation cancelled")
+		//	return
+		//}
 		if duration == "" {
 			duration = "3M"
 		}

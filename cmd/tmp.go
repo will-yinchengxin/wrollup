@@ -13,7 +13,7 @@ var (
 	vsd = `{
   "index_pattern": "cc-d-h1-acc-*",
   "rollup_index": "rollup-cc-d-h1-acc",
-  "cron": "0 0/20 * * * ?",
+  "cron": "0 0/5 * * * ?",
   "page_size": 5000,
   "groups": {
     "date_histogram": {
@@ -36,19 +36,19 @@ var (
   "metrics": [
     {
       "field": "ivsd_vts_proxy_resp_body_len",
-      "metrics": ["min", "max", "sum", "avg"]
+      "metrics": ["sum"]
     },
     {
       "field": "ivsd_vts_upstream_resp_body_len",
-      "metrics": ["min", "max", "sum", "avg"]
+      "metrics": ["sum"]
     },
     {
       "field": "ivsd_vts_time_spent_upstream",
-      "metrics": ["min", "max", "avg"]
+      "metrics": ["avg"]
     },
     {
       "field": "ivsd_vts_ttfb",
-      "metrics": ["min", "max", "avg"]
+      "metrics": ["avg"]
     }
   ]
 }`
@@ -56,7 +56,7 @@ var (
 	vsp = `{
   "index_pattern": "cc-p-h1-acc-*",
   "rollup_index": "rollup-cc-p-h1-acc",
-  "cron": "0 0/20 * * * ?",
+  "cron": "0 0/5 * * * ?",
   "page_size": 5000,
   "groups": {
     "date_histogram": {
@@ -85,15 +85,11 @@ var (
   "metrics": [
     {
       "field": "size",
-      "metrics": ["min", "max", "sum", "avg"]
+      "metrics": ["sum", "avg"]
     },
     {
       "field": "request_time",
-      "metrics": ["min", "max", "avg"]
-    },
-    {
-      "field": "upstream_response_time",
-      "metrics": ["min", "max", "avg"]
+      "metrics": ["avg"]
     }
   ]
 }`
