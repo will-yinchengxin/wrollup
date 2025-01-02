@@ -1,5 +1,7 @@
 package cmd
 
+// cron: https://cron.ciding.cc/
+
 var (
 	mapping = map[string]string{
 		"vsd": vsd,
@@ -9,9 +11,9 @@ var (
 
 var (
 	vsd = `{
-  "index_pattern": "vsd-access-*",
-  "rollup_index": "rollup-vsd",
-  "cron": "0 0/1 * * * ?",
+  "index_pattern": "cc-d-h1-acc-*",
+  "rollup_index": "rollup-cc-d-h1-acc",
+  "cron": "0 0/20 * * * ?",
   "page_size": 5000,
   "groups": {
     "date_histogram": {
@@ -26,7 +28,8 @@ var (
         "ivsd_vts_client_ip.keyword",
         "ivsd_vts_request_domain.keyword",
         "ivsd_vts_proxy_resp_status.keyword",
-        "ivsd_vts_cache_result.keyword"
+        "ivsd_vts_cache_result.keyword",
+		"zone.keyword"
       ]
     }
   },
@@ -51,9 +54,9 @@ var (
 }`
 
 	vsp = `{
-  "index_pattern": "vsp-access-*",
-  "rollup_index": "rollup-vsp",
-  "cron": "0 0/1 * * * ?",
+  "index_pattern": "cc-p-h1-acc-*",
+  "rollup_index": "rollup-cc-p-h1-acc",
+  "cron": "0 0/20 * * * ?",
   "page_size": 5000,
   "groups": {
     "date_histogram": {
@@ -69,7 +72,9 @@ var (
         "client_ip.keyword",
         "status.keyword",
         "upstream_status.keyword",
-        "upstream_cache_status.keyword"
+        "upstream_cache_status.keyword",
+		"client_facing.keyword",
+		"zone.keyword"
       ]
     },
     "histogram": {
