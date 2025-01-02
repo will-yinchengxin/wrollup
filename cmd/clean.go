@@ -12,7 +12,7 @@ var (
 	duration string
 )
 
-// 0 1 * * * /usr/local/vda/wrollup clean --indice vsd --duration 15D && /usr/local/vda/wrollup clean --indice vsp --duration 15D >> /path/to/logfile.log 2>&1
+// 0 1 * * * /usr/local/vda/wrollup clean --indice cc-d-h1-acc --duration 15D && /usr/local/vda/wrollup clean --indice cc-p-h1-acc --duration 15D >> /path/to/logfile.log 2>&1
 
 var cleanCmd = &cobra.Command{
 	Use:   "clean",
@@ -23,10 +23,12 @@ var cleanCmd = &cobra.Command{
 			wtools.Error("Indice pattern is required")
 			return
 		}
-		if _, ok := mapping[indice]; !ok {
+		val, ok := indiceMapping[indice]
+		if !ok {
 			wtools.Error(fmt.Sprintf("Indice「%s」is not exist on local map", indice))
 			return
 		}
+		indice = val
 
 		client := es.NewClient(esURL)
 

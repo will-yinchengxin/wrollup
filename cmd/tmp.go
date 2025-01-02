@@ -7,6 +7,12 @@ var (
 		"vsd": vsd,
 		"vsp": vsp,
 	}
+	indiceMapping = map[string]string{
+		"cc-d-h1-acc": "cc-d-h1-acc",
+		"cc-p-h1-acc": "cc-p-h1-acc",
+		"vsp":         "cc-p-h1-acc",
+		"vsd":         "cc-d-h1-acc",
+	}
 )
 
 var (
