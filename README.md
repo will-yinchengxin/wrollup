@@ -19,7 +19,7 @@ WRollup 是一个用于管理 Elasticsearch Rollup 作业的命令行工具。�
 2. 克隆项目到本地：
 
    ```bash
-   git clone https://github.com/yourusername/wrollup.git
+   git clone github.com/will-yinchengxin/wrollup.git
    cd wrollup
    ```
 
