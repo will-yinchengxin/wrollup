@@ -14,6 +14,12 @@ import (
 // go run main.go get all
 // go run main.go get all
 // go run main.go get --job sensor
+// CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o wrollup main.go
+
+/*
+ go run main.go create --job rollup-ccd --indice vsd && go run main.go create --job rollup-ccp --indice vsp
+ go run main.go delete --job rollup-ccd && go run main.go delete --job rollup-ccp
+*/
 
 func main() {
 	err := wtools.LogToFile()

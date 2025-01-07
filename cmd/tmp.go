@@ -25,9 +25,9 @@ var (
   "page_size": 5000,
   "groups": {
     "date_histogram": {
-      "field": "@timestamp",
+      "field": "time_local",
       "fixed_interval": "5m",
-      "delay": "20m",
+      "delay": "5m",
       "time_zone": "Asia/Shanghai"
     },
     "terms": {
@@ -68,9 +68,9 @@ var (
   "page_size": 5000,
   "groups": {
     "date_histogram": {
-      "field": "@timestamp",
+      "field": "time_local",
       "fixed_interval": "5m",
-      "delay": "20m",
+      "delay": "5m",
       "time_zone": "Asia/Shanghai"
     },
     "terms": {
