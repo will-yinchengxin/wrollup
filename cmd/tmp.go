@@ -8,16 +8,80 @@ var (
 		"vsp":         vsp,
 		"cc-p-h1-acc": vsp,
 		"cc-d-h1-acc": vsd,
+		"lsep1":       lsep1,
+		"lsep2":       lsep2,
 	}
 	indiceMapping = map[string]string{
 		"cc-d-h1-acc": "cc-d-h1-acc",
 		"cc-p-h1-acc": "cc-p-h1-acc",
 		"vsp":         "cc-p-h1-acc",
 		"vsd":         "cc-d-h1-acc",
+		"lsep1":       "lsep1",
+		"lsep2":       "lsep2",
 	}
 )
 
 var (
+	lsep1 = `{
+  "index_pattern": "lsep1-*",
+  "rollup_index": "rollup-lsep1",
+  "cron": "0 0/5 * * * ?",
+  "page_size": 5000,
+  "groups": {
+    "date_histogram": {
+      "field": "time_local",
+      "fixed_interval": "5m",
+      "delay": "5m",
+      "time_zone": "Asia/Shanghai"
+    },
+    "terms": {
+      "fields": [
+        "host.keyword",
+        "client_ip.keyword",
+        "status.keyword",
+        "upstream_cache_status.keyword",
+		"client_facing.keyword",
+		"zone.keyword"
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "field": "size",
+      "metrics": ["sum"]
+    }
+  ]
+}`
+	lsep2 = `{
+  "index_pattern": "lsep2-*",
+  "rollup_index": "rollup-lsep2",
+  "cron": "0 0/5 * * * ?",
+  "page_size": 5000,
+  "groups": {
+    "date_histogram": {
+      "field": "time_local",
+      "fixed_interval": "5m",
+      "delay": "5m",
+      "time_zone": "Asia/Shanghai"
+    },
+    "terms": {
+      "fields": [
+        "host.keyword",
+        "client_ip.keyword",
+        "status.keyword",
+        "upstream_cache_status.keyword",
+		"client_facing.keyword",
+		"zone.keyword"
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "field": "size",
+      "metrics": ["sum"]
+    }
+  ]
+}`
 	vsd = `{
   "index_pattern": "cc-d-h1-acc-*",
   "rollup_index": "rollup-cc-d-h1-acc",
@@ -75,7 +139,6 @@ var (
     },
     "terms": {
       "fields": [
-		"remote.keyword",
         "host.keyword",
         "client_ip.keyword",
         "status.keyword",
@@ -84,10 +147,6 @@ var (
 		"client_facing.keyword",
 		"zone.keyword"
       ]
-    },
-    "histogram": {
-       "fields": ["request_time"],
-       "interval": 2
     }
   },
   "metrics": [
